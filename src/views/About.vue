@@ -1,15 +1,17 @@
 <template>
   <div class="">
    <museum />
-   <museum />
+   <news />
   </div>
 </template>
 
 <script>
 import Museum from '../components/Museum.vue'
+import News from '../components/News.vue'
 export default {
   components: {
-    Museum
+    Museum,
+    News
   }
 }
 </script>

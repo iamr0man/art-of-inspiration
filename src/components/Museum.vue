@@ -33,18 +33,17 @@ export default {
 
     &__aside {
       width: 80%;
-      height: 20vh;
       border-right: 2px solid #d7d3d0;
       display: flex;
       flex-direction: column;
       justify-content: center;  
       .museum__top {
         display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+        justify-content: flex-start;
+        align-items: baseline;
         .museum__number {
           font-family: 'Armin-Grotesk', sans-serif;
-          font-size: 60px;
+          font-size: 100px;
         }
 
       }
@@ -55,7 +54,6 @@ export default {
 
     &__main {
       width: 80%;
-      height: 60vh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
