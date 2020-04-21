@@ -1,0 +1,7 @@
+$primary-color: #f5f0e3;
+
+@mixin basic{
+  width: 100vw;
+  height: 100vw;
+  display: flex;
+}

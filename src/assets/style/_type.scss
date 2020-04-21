@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Hagrid";
+  src: url('../fonts/Hagrid-Regular-trial.ttf');
+}
+
+@font-face {
+  font-family: "Hagrid";
+  src: url('../fonts/Hagrid-Text-Extrabold-trial.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Armin-Grotesk";
+  src: url('../fonts/Armin-Grotesk.ttf');
+}
+
+
+body {
+  font-family: "Hagrid", sans-serif;
+}

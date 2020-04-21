@@ -1,5 +1,18 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="">
+   <museum />
+   <museum />
   </div>
 </template>
+
+<script>
+import Museum from '../components/Museum.vue'
+export default {
+  components: {
+    Museum
+  }
+}
+</script>
+
+<style>
+</style>
