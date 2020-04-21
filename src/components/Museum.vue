@@ -43,6 +43,8 @@ export default {
         align-items: baseline;
         .museum__number {
           font-family: 'Armin-Grotesk', sans-serif;
+          text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #fff;
+          color: #fef6f0;
           font-size: 100px;
         }
 
