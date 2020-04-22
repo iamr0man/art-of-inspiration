@@ -6,8 +6,8 @@
       <h2 class="meet__number">02</h2>
     </div>
     <div class="meet__item">
-      <img src="../assets/photos/gogh1.jpeg" alt="Vincent van Gogh" class="item__image">
       <div class="meet__between"></div>
+      <img src="../assets/photos/gogh1.jpeg" alt="Vincent van Gogh" class="item__image">
       <div class="item__details">
         <h3 class="item__header">
           <span>Vincent Gogh's</span>
@@ -19,8 +19,8 @@
       </div>
     </div>
     <div class="meet__item">
-      <img src="../assets/photos/gogh2.jpeg" alt="Vincent van Gogh" class="item__image">
       <div class="meet__between"></div>
+      <img src="../assets/photos/gogh2.jpeg" alt="Vincent van Gogh" class="item__image">
       <div class="item__details">
         <h3 class="item__header">
           <span>Storiest about</span>
@@ -32,8 +32,8 @@
       </div>
     </div>
     <div class="meet__item">
-      <img src="../assets/photos/gogh3.jpeg" alt="Vincent van Gogh" class="item__image">
       <div class="meet__between"></div>
+      <img src="../assets/photos/gogh3.jpeg" alt="Vincent van Gogh" class="item__image">
       <div class="item__details">
         <h3 class="item__header">
           <span>Explore the</span>
@@ -98,6 +98,54 @@ export default {
         color: #a5a5a5;
         margin-top: 10px;
         font-size: 12px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1440px) {
+
+    .meet {
+      &__article {
+      border-right: none;
+      justify-content: space-between;
+      align-items: center;
+
+        .meet__header {
+          font-size: 94px;
+        }
+
+        .meet__between {
+          // display: block;
+          // width: 30vw;
+          // height: 100%;
+          border-right: 2px solid #d7d3d0;
+        }
+      }
+
+      &__item {
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 100px 0;
+        .item__image {
+          width: 50%;
+        }
+
+        .meet__between {
+          display: block;
+          width: 24vw;
+          border-left: 2px solid #d7d3d0;
+        }
+
+        .item__details {
+          padding: 20px;
+          border-right: 2px solid #d7d3d0;
+        }
+
+        .item__additional {
+          color: #a5a5a5;
+          margin-top: 10px;
+          font-size: 12px;
+        }
       }
     }
   }

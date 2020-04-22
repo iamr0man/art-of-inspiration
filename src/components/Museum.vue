@@ -1,4 +1,4 @@
-<template>
+header<template>
   <div class="museum">
     <div class="museum__aside">
       <div class="museum__top">
@@ -66,7 +66,7 @@ export default {
         flex-direction: column;
         align-items: flex-end;
         text-transform: uppercase;
-        font-size: 44px;
+        font-size: 94px;
       }
 
       .museum__about {
@@ -76,7 +76,6 @@ export default {
       }
 
       .museum__image {
-        height: 85%;
         width: 255%;
         position: relative;
         right: 220px;
@@ -85,6 +84,40 @@ export default {
 
     &__section {
       display: none;
+    }
+  }
+
+  @media screen and (max-width: 1440px) {
+    .museum {
+      flex-direction: row;
+
+      &__aside {
+        order: 3;
+        justify-content: space-between;
+
+        .museum__image {
+          display: block;
+          width: 132%;
+        }
+      }
+      &__main {
+        order: 2;
+        .museum__image {
+          width: 100%;
+          right: 0;
+          left: 160px;
+          order: 3;
+        }
+      }
+
+      &__section {
+        order: 1;
+        display: block;
+
+        .museum__image {
+          width: 130%;
+        }
+      }
     }
   }
 </style>
