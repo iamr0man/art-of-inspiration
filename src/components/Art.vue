@@ -110,4 +110,55 @@ export default {
       padding: 20px 0;
     }
   }
+
+  @media screen and (min-width: 1440px) {
+    .art {
+      &__body{
+        width: 89%; 
+        padding: 100px;
+        flex-direction: row;
+        text-align: right;
+        flex-wrap: wrap;
+        .art__header{
+          width: 47%;
+          .art__number {
+            font-size: 73px;
+          } 
+        }
+
+        &:nth-child(2n) {
+          .art__header {
+            order: 2;
+          }
+
+          .art__details {
+            order: 1;  
+            border-left: none; 
+            border-right: 2px solid #d7d3d0;          
+          }
+
+          .art__about {
+            order: 4;
+            margin: 0 auto;
+            text-align: right;
+          }
+
+          .art__image {
+            order: 3;
+          }
+        }
+
+        .art__details {
+          order: 0;
+          padding: 100px;
+          border-left: 2px solid #d7d3d0;
+        }
+        .art__about {
+          font-size: 19px;
+          text-align: left;
+          width: 50%;
+        }
+      }
+    }
+  }
 </style>

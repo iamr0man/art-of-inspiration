@@ -90,4 +90,55 @@ export default {
 
     }
   }
+
+  @media screen and (min-width: 1440px) {
+    .news {
+      flex-direction: row;
+      padding: 20px;
+      position: relative;
+
+      &::before {
+        content: '';
+        width: 0;
+        height: 100%;
+        position: absolute;
+        border: 1px solid #d7d3d0;
+        top: 0;
+        left: 472px;
+      }
+
+      &::after {
+        content: '';
+        width: 0;
+        height: 100%;
+        position: absolute;
+        border: 1px solid #d7d3d0;
+        top: 0;
+        right: 577px;
+      }
+
+      &__photo {
+        .news__image {
+          width: 124%;
+        }
+      }
+
+      &__aside {
+        order: 3;
+        flex-direction: row;
+        border-right: none;
+      }
+
+      &__main {
+        justify-content: space-evenly;
+        border-right: none;
+        .news__header{
+          font-size: 94px;
+        }
+        .news__about {
+          padding: 70px;
+        }
+      }
+    }
+  }
 </style>

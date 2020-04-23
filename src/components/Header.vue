@@ -11,10 +11,8 @@
           <input type="checkbox" />
           Menu
           <ul id="menu">
-            <a href="#"><li>Home</li></a>
-            <a href="#"><li>About</li></a>
-            <a href="#"><li>Info</li></a>
-            <a href="#"><li>Contact</li></a>
+            <router-link to="/"><li>Museum</li></router-link>
+            <router-link to="/art"><li>Art</li></router-link>
           </ul>
         </div>
       </nav>
@@ -33,11 +31,21 @@ export default {
   height: 12vh;
   display: flex;
   background-color: #fef6f0;
+  position: relative;
+}
+
+.header::after {
+  content: '';
+  width: 100%;
+  position: absolute;
+  border: 1px solid #d7d3d0;
+  top: 97px;
 }
 
 .header__logo {
   width: 25%;
   background-color: #000;
+  z-index: 1;
 }
 
 .header__container {

@@ -30,6 +30,7 @@ export default {
     background-color:#fef6f0;
     display: flex;
     flex-direction: column;
+    position: relative;
 
     &__aside {
       width: 80%;
@@ -66,7 +67,8 @@ export default {
         flex-direction: column;
         align-items: flex-end;
         text-transform: uppercase;
-        font-size: 94px;
+        font-size: 44px;
+        z-index: 1;
       }
 
       .museum__about {
@@ -79,6 +81,7 @@ export default {
         width: 255%;
         position: relative;
         right: 220px;
+        z-index: 1;
       }
     }
 
@@ -87,26 +90,54 @@ export default {
     }
   }
 
-  @media screen and (max-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     .museum {
       flex-direction: row;
+      padding: 20px;
+
+      &::before {
+        content: '';
+        width: 0;
+        height: 100%;
+        position: absolute;
+        border: 1px solid #d7d3d0;
+        top: 0;
+        left: 472px;
+      }
+
+      &::after {
+        content: '';
+        width: 0;
+        height: 100%;
+        position: absolute;
+        border: 1px solid #d7d3d0;
+        top: 0;
+        right: 538px;
+      }
 
       &__aside {
         order: 3;
         justify-content: space-between;
+        border-right: none;
 
         .museum__image {
           display: block;
           width: 132%;
+          margin-left: 17px;
         }
       }
       &__main {
         order: 2;
+        border-right: none;
         .museum__image {
           width: 100%;
           right: 0;
           left: 160px;
           order: 3;
+        }
+
+        .museum__header {
+          font-size: 94px;
         }
       }
 
@@ -115,7 +146,8 @@ export default {
         display: block;
 
         .museum__image {
-          width: 130%;
+          width: 124%;
+          margin-bottom: -77px;
         }
       }
     }
