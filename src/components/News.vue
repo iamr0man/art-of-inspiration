@@ -6,7 +6,9 @@
       </div>
     </div>
     <div class="news__photo">
-      <img class="news__image" src="../assets/photos/news03.jpeg" alt="">
+      <transition name="fade">
+        <img v-show="!loaded" class="news__image" src="../assets/photos/news03.jpeg" alt="">
+      </transition>
     </div>
     <div class="news__main">
       <h2 class="news__header">news</h2>
@@ -20,7 +22,14 @@
 
 <script>
 export default {
-
+  data(){
+    return {
+      loaded: true
+    }
+  },
+  mounted(){
+    this.loaded = false;
+  }
 }
 </script>
 
@@ -30,6 +39,23 @@ export default {
     background-color:#fef6f0;
     display: flex;
     flex-direction: column;
+
+    .fade-enter-active {
+      transition: all .6s ease-in-out;
+      transition-delay: 2s;
+    }
+
+    .fade-enter-to {
+      opacity: 1;
+      transform: scale(1);
+      transform: translateY(-40px)
+    }
+
+    .fade-enter {
+      opacity: 0;
+      transform: scale(0.3);
+      transform: translateY(0)
+    }
 
     &__aside {
       width: 80%;
@@ -120,6 +146,7 @@ export default {
       &__photo {
         .news__image {
           width: 124%;
+          margin-top: -77px;
         }
       }
 

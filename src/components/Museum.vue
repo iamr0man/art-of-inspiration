@@ -1,26 +1,52 @@
-header<template>
-  <div class="museum">
+<template>
+  <div v-on:scroll="handleScroll" class="museum">
     <div class="museum__aside">
       <div class="museum__top">
         <h1 class="museum__number">01</h1>
         <p class="museum__additional">Tickets</p>
       </div>
-      <img class="museum__image museum__image-right" src="../assets/photos/museum-medium.jpeg" alt="museum outside">
+      <transition name="fade">
+        <img v-show="!loaded" ref="sky" class="museum__image" src="../assets/photos/museum-medium.jpeg" alt="museum outside">
+      </transition>
     </div>
     <div class="museum__main">
-      <img class="museum__image museum__image-middle" src="../assets/photos/museum-small.jpeg" alt="Vincent van Gogh">
+      <transition name="fade">
+        <img v-show="!loaded" ref="gogh" class="museum__image" src="../assets/photos/museum-small.jpeg" alt="Vincent van Gogh">
+      </transition>
       <h2 class="museum__header"><span>van</span> <span>gogh</span> <span>museum</span></h2>
       <p class="museum__about">Step into Van Gogh's world. Explore the world's largest collection of works by Vincent van Gogh at the Van Gogh Museum in Amsterdam</p>
     </div>
     <div class="museum__section">
-      <img class="museum__image museum__image-big" src="../assets/photos/news03.jpeg" alt="museum outside">
+      <transition name="fade">
+        <img v-show="!loaded" ref="museum" class="museum__image" src="../assets/photos/news03.jpeg" alt="museum outside">
+      </transition>
     </div>
   </div>   
 </template>
 
 <script>
 export default {
-
+  data(){
+    return {
+      loaded: true,
+    }
+  },
+  methods: {
+  handleScroll () {
+    this.$refs.museum.style.bottom = window.scrollY * 0.5 + 'px';
+    this.$refs.gogh.style.bottom = window.scrollY * 0.6 + 'px';
+    this.$refs.sky.style.bottom = window.scrollY * 0.5 + 'px';
+  }
+  },
+  created () {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  mounted(){
+    this.loaded = false;
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
 }
 </script>
 
@@ -31,6 +57,21 @@ export default {
     display: flex;
     flex-direction: column;
     position: relative;
+
+    .fade-enter-active {
+      transition: all .6s ease-in-out;
+      transition-delay: 2s;
+    }
+
+    .fade-enter-to {
+      opacity: 1;
+      transform: scale(1)
+    }
+
+    .fade-enter {
+      opacity: 0;
+      transform: scale(0.3)
+    }
 
     &__aside {
       width: 80%;
@@ -122,6 +163,7 @@ export default {
 
         .museum__image {
           display: block;
+          position: relative;
           width: 132%;
           margin-left: 17px;
         }
@@ -132,7 +174,7 @@ export default {
         .museum__image {
           width: 100%;
           right: 0;
-          left: 160px;
+          left: 300px;
           order: 3;
         }
 
@@ -146,8 +188,8 @@ export default {
         display: block;
 
         .museum__image {
+          position: relative;
           width: 124%;
-          margin-bottom: -77px;
         }
       }
     }
