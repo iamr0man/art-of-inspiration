@@ -3,6 +3,7 @@
     <div class="news__aside">
       <div class="news__top">
         <h1 class="news__number">03</h1>
+        <canvas ref="canvas" width="400" height="700"></canvas>
       </div>
     </div>
     <div class="news__photo">
@@ -21,14 +22,91 @@
 </template>
 
 <script>
+import Ball from '../plugins/ball.js'
 export default {
   data(){
     return {
       loaded: true
     }
   },
+  methods: {
+    initCanvas(){
+      var canvas = this.$refs.canvas,
+          context = canvas.getContext('2d'),
+          balls = [],
+          numBalls = 20,
+          bounce = -1,
+          spring = 0.1;
+
+      for (var ball, i = 0; i < numBalls; i++) {
+        ball = new Ball(Math.random() * 30 + 20, Math.random() * 0xffffff);
+        ball.x = Math.random() * canvas.width / 2;
+        ball.y = Math.random() * canvas.height / 2;
+        ball.vx = Math.random() * 6 - 3;
+        ball.vy = Math.random() * 6 - 3;
+        balls.push(ball);
+      }
+
+      function checkCollision (ballA, i) {
+        var ballB, dx, dy, dist, min_dist;
+        for (var j = i + 1; j < numBalls; j++) {
+          ballB = balls[j];
+          dx = ballB.x - ballA.x;
+          dy = ballB.y - ballA.y;
+          dist = Math.sqrt(dx * dx + dy * dy);
+          min_dist = ballA.radius + ballB.radius;
+
+          if (dist < min_dist) {
+          debugger
+            var tx = ballA.x + dx / dist * min_dist,
+                ty = ballA.y + dy / dist * min_dist,
+                ax = (tx - ballB.x) * spring,
+                ay = (ty - ballB.y) * spring;
+            ballA.vx -= ax;
+            ballA.vy -= ay;
+            ballB.vx += ax;
+            ballB.vy += ay;
+          }
+        }
+      }
+
+      function move (ball) {
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+        if (ball.x + ball.radius > canvas.width) {
+          ball.x = canvas.width - ball.radius;
+          ball.vx *= bounce;
+        } else if (ball.x - ball.radius < 0) {
+          ball.x = ball.radius;
+          ball.vx *= bounce;
+        }
+        if (ball.y + ball.radius > canvas.height) {
+          ball.y = canvas.height - ball.radius;
+          ball.vy *= bounce;
+        } else if (ball.y - ball.radius < 0) {
+          ball.y = ball.radius;
+          ball.vy *= bounce;
+        }
+      }
+
+      function draw (ball) {
+        ball.draw(context);
+      }
+
+      (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        balls.forEach(checkCollision);
+        balls.forEach(move);
+        balls.forEach(draw);
+      }());
+    }
+  },
   mounted(){
     this.loaded = false;
+    // create bouncing balls;
+    this.initCanvas();
   }
 }
 </script>
@@ -154,6 +232,10 @@ export default {
         order: 3;
         flex-direction: row;
         border-right: none;
+
+        .news__top {
+          flex-direction: column;
+        }
       }
 
       &__main {
